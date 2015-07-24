@@ -22,8 +22,23 @@ fs.readFile('mickens.txt', 'utf8', function (err,data) {
   quotes = data.split("\n");
 });
 
-function getQuote() {
-  return quotes[Math.floor(Math.random() * quotes.length)];
+function getQuote(message) {
+if (message) {
+  var query = message.replace("mickensbot: ", "")
+		     .replace("mickensbot, ", "")
+                     .replace("mickensbot:", "")
+                     .replace("mickensbot,", "")
+                     .replace("mickensbot", "");
+    console.log(query)
+    for (var i = 0; i < quotes.length; i++) {
+      var index = quotes[i].indexOf(query);
+      if (index !== -1) {
+        return quotes[i]
+      }
+    }
+  }
+  var quote = quotes[Math.floor(Math.random() * quotes.length)];
+  return "Not sure about " + query + " but " + quote.substring(0, 1).toLowerCase() + quote.substring(1);
 }
 
 function mickensbot(client)
@@ -58,7 +73,7 @@ function mickensbot(client)
                     return;
                 }
 
-	    client.say(chan, getQuote());
+	    client.say(chan, getQuote(message));
                 return;
             }
         });

@@ -2,11 +2,11 @@ const MINUTES = 1000 * 60; // ms
 const HOURS = MINUTES * 60;
 
 module.exports = {
-    server: 'irc.somewhere.org',
-    channels: ['#chan'],
-    nick: 'horsejs',
-    userName: 'horsejs',
-    realName: 'horsejs',
+    server: 'irc.mozilla.org',
+    channels: ['#lalala'],
+    nick: 'mickensbot',
+    userName: 'mickensbot',
+    realName: 'mickensbot',
     censorshipPeriodMap: {
         '#chan': 4 * HOURS
     },
